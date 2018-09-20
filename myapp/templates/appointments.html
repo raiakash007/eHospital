@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+              <link href="{% static "dashboard.css" %}" rel="stylesheet">
+              <title>Add Appointments</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <span class="glyphicon glyphicon-apple" aria-hidden="true"></span></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/patientlog/">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        </br>
+        <div class="row">
+            <div class="col-xs-3 col-sm-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    </br></br>
+                    <li><a href="/p_dashboard/">Home</a></li>
+                    <li><a href="/appointments/">Add Appointments</a></li>
+                    <li><a href="/manage_appointments/">Manage Appointments</a></li>
+                    <li><a href="/change_password/">Change Password</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-9 col-sm-10 main">
+                <h1 class="page-header">Add Appointments</h1>
+
+                <center><font color="green">{{message}}</font></center>
+                <center><font color="red">{{error}}</font></center>
+
+                <form action="/bookappointment/" method="POST">
+                    <div class="jumbotron">
+                        <div class="form-group">
+                            <label for="dname">Select Doctor</label>
+                            <select name="doctorname" class="form-control" id="dname">
+                                <option>Select Doctor</option>
+                                {% for result in data1 %}
+                                <option value="{{result.id}}">{{result.name}} - {{result.specialization}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" class="form-control" id="date" placeholder="Enter the appointment date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Time</label>
+                            <input type="time" class="form-control" id="time" placeholder="Enter the appointment time" name="time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Reason</label>
+                            <input type="text" class="form-control" id="reason" placeholder="Enter reason for appointment" name="reason" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Description</label>
+                            <textarea class="form-control" name="description" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-default">Book Appointment</button>
+                </form>

@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+              <link href="{% static "dashboard.css" %}" rel="stylesheet">
+              <title>Change Password</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <span class="glyphicon glyphicon-apple" aria-hidden="true"></span></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/patientlog/">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        </br>
+        <div class="row">
+            <div class="col-xs-3 col-sm-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    </br></br>
+                    <li><a href="/p_dashboard/">Home</a></li>
+                    <li><a href="/appointments/">Add Appointments</a></li>
+                    <li><a href="/manage_appointments/">Manage Appointments</a></li>
+                    <li><a href="/change_password/">Change Password</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-9 col-sm-10 main">
+                <p style="color:green;text-align: center;">{{message}}</p>
+                <div class="jumbotron">
+                    <h3 style="text-align: center;">CHANGE PASSWORD</h3>
+                    <form action="/pchangepass/" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="new">Enter New Password</label>
+                            <input type="password" class="form-control col-md-2" id="new" placeholder="Enter the new password" name="pass" required>
+                        </div>
+                        <br/><br/>
+                        <button type="submit" class="btn btn-default">Change Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="[% static "js/bootstrap.min.js" %}"></script>
+    <!-- <script src="{% static "js/vendor/holder.min.js" %}"></script> -->
+</body>
+</html>

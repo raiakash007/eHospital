@@ -1,0 +1,21 @@
+{% include "header.html" %}
+<div class="container">
+    <div class="jumbotron">
+        <h1 style="text-align: center;">FORGOT PASSWORD</h1>
+
+        <center><font color="green">{{message}}</font></center>
+        <center><font color="red">{{error}}</font></center>
+
+        <form action="/p_confirm/" method="POST">
+            <div class="form-group">
+                <label for="username">Enter Email</label>
+                <input type="email" class="form-control" id="username" placeholder="Username" name="username">
+            </div>
+            <button type="submit" class="btn btn-default">Change Password</button>
+            </br></br>
+            <p style="text-align: center;"><a href="/forgotpass/"><ins>Forgot Password?</ins></a></p>
+        </form>
+    </div>
+</div>
+</body>
+</html>

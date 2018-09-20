@@ -1,0 +1,25 @@
+{% include "header.html" %}
+<div class="container">
+    <div class="jumbotron">
+        <h1 style="text-align: center;">PATIENT LOGIN</h1>
+
+        <center><font color="green">{{message}}</font></center>
+        <center><font color="red">{{error}}</font></center>
+
+        <form action="/patientlogin/" method="POST">
+            <div class="form-group">
+                <label for="username">Email</label>
+                <input type="email" class="form-control" id="username" placeholder="Username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="pass">Password</label>
+                <input type="password" class="form-control" id="pass" placeholder="Password" name="pas">
+            </div>
+            <button type="submit" class="btn btn-default">Login</button>
+            </br></br>
+            <p style="text-align: center;"><a href="/forgotpass/"><ins>Forgot Password?</ins></a></p>
+        </form>
+    </div>
+</div>
+</body>
+</html>
